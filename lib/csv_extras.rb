@@ -15,6 +15,17 @@ module CsvExtras
     end
   end
 
+  def to_hashes
+    self.auto_col_sep
+    contents = self.read
+    arr = []
+    headers = contents.first.map {|key| key }
+    entries = contents[1..-1]
+    entries.each { |row| arr << Hash[headers.zip(row)] }
+    arr
+  end
+
+
 end
 
 class CSV
