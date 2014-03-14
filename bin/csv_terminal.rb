@@ -13,9 +13,11 @@ if file_paths == ''
   file_paths = "people_comma.csv people_pipe.csv people_space.csv"
 end
 
-file_paths_arr = file_paths.split(' ').each do |file_path|
+file_paths_arr = file_paths.split(' ').map do |file_path|
   File.expand_path("../#{file_path}", __FILE__)
 end
+
+p file_paths_arr
 
 def print_pretty_table(arr_of_hashes)
   arr = []

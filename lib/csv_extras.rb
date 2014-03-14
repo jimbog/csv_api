@@ -19,7 +19,7 @@ module CsvExtras
     self.auto_col_sep
     contents = self.read
     arr = []
-    headers = contents.first.map {|key| key }
+    headers = contents.first.map {|key| key.downcase.to_sym }
     entries = contents[1..-1]
     entries.each { |row| arr << Hash[headers.zip(row)] }
     arr
