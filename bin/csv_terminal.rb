@@ -1,4 +1,5 @@
 require 'terminal-table'
+require 'json'
 require 'csv'
 require_relative '../lib/csv_extras'
 require_relative '../lib/hashes_array'
@@ -26,6 +27,8 @@ def print_pretty_table(arr_of_hashes)
 end
 
 myArr = HashesArray.new file_paths_arr
+
+#myArr.arr.each {|row| puts row.to_json }
 
 puts print_pretty_table myArr.arr
 
