@@ -33,7 +33,7 @@ describe CsvExtras do
       expect(pipe_file).to respond_to(:to_hashes)
     end
     it "returns the correct array of hashes" do
-      expect(pipe_file.to_hashes[0]["LastName"]).to eq("Appleton")
+      expect(pipe_file.to_hashes[0][:lastname]).to eq("Appleton")
     end
   end
 end

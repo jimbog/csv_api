@@ -2,11 +2,13 @@ require 'rubygems'
 require 'grape'
 require 'json'
 require 'csv'
+require 'rack/contrib'
 require_relative '../lib/csv_extras'
 require_relative '../lib/hashes_array'
 
 
 class Test < Grape::API
+  use Rack::JSONP
   version 'v1'
   format :json
 
@@ -17,10 +19,11 @@ class Test < Grape::API
   end
 
   myArr = HashesArray.new file_paths_arr
+  myArr.column_to_date "DateOfBirth", "%m/%d/%Y"
 
   resource :records do
     get ':order' do
-      myArr.sort_by! params[:order] 
+      return "#{myArr.sort_by!(params[:order]).to_json}"
     end
 
     post ':line' do
