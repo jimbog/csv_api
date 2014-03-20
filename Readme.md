@@ -14,3 +14,7 @@ The table is sortable. To sort by any column just click on the header.
 
 To save data to the 'bin/incoming.csv' file that's on the server. The
 user just types on the input box and hits submit.
+
+Demo
+---
+Here is a [DEMO](http://jimbog.github.io/csv_api/)
