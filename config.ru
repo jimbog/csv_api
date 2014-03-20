@@ -1,3 +1,3 @@
-require_relative './bin/test'
+require_relative './bin/api'
 
-run Test
+run CsvApi
