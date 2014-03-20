@@ -7,7 +7,7 @@ require_relative '../lib/csv_extras'
 require_relative '../lib/hashes_array'
 
 
-class Test < Grape::API
+class CsvApi < Grape::API
   use Rack::JSONP
   version 'v1'
   format :json
