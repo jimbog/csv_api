@@ -3,7 +3,7 @@ CSV API
 Description
 ---
 This app uses grape to serve data from multiple csv files.
-The data is retrieved by an AngularJS that displays it on a table.
+The data is retrieved by an AngularJS app that displays it on a table.
 
 Usage
 ---
