@@ -30,11 +30,11 @@
       </table>
 
       <form action="" method="post" accept-charset="utf-8">
-        <input type="text" ng-model="postUrl" />
+        <input type="text" ng-model="postData" />
         <div>
           Data to be sent: {{postData}}
         </div>
-        <button type="submit" >Submit</button>
+        <button type="submit" ng-click="postLine()">Submit</button>
       </form>
 
       <div data-alert class="alert-box warning round small-6">
@@ -67,6 +67,18 @@ app.service('alerts', function() {
       + '<a href="#" class="close">&times;</a>'
       + '</div>'
       )};
+
+
+    this.postSuccess = function(posted) {
+    console.log('Successfully posted');
+    $('.FetchCtrl').append(
+      '<div data-alert class="alert-box small-4">'
+      + 'Successfully, posted '
+      + posted
+      + '<a href="#" class="close">&times;</a>'
+      + '</div>'
+      )};
+
     }); 
 
 app.controller('FetchCtrl', function($scope, $http, alerts) {
@@ -90,17 +102,20 @@ app.controller('FetchCtrl', function($scope, $http, alerts) {
     };
 
 
-    $scope.postLine = function(text) {
-      $scope.postData = "";
+    $scope.postLine = function() {
+      text = encodeURIComponent($scope.postData);
+      console.log(text);
 
-      $http.jsonp("http://localhost:5000/v1/records/new/" + text )
+      $http.post("http://localhost:5000/v1/records/" + text )
+      
       .success(function(data){
-        console.log('success');
+        console.log('successfully posted');
+        alerts.postSuccess($scope.postData);
         })
       .error(function(data){
         console.log('error');
         });
-    //alerts.postSuccess();
+      $scope.postData ="";
     };
 
     $scope.sort_table = function (sort_by){

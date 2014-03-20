@@ -21,14 +21,18 @@ class Test < Grape::API
   myArr = HashesArray.new file_paths_arr
   myArr.column_to_date "DateOfBirth", "%m/%d/%Y"
 
+
   resource :records do
     get ':order' do
       return "#{myArr.sort_by!(params[:order]).to_json}"
     end
 
     post ':line' do
-      new_record = params[:line]
-      myArr.arr << new_record
+      line = params[:line]
+      incoming = "#{__dir__}/incoming.csv"
+      open(incoming, 'a') do |f|
+        f.puts line
+      end
     end
   end
 
