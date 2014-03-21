@@ -7,7 +7,9 @@ The data is retrieved by an AngularJS app that displays it on a table.
 
 Usage
 ---
-To start the grape service move to the root of the project and type
+To use the app in the terminal just run 'ruby bin/csv_terminal.rb'
+
+To use the web app, start the grape service move to the root of the project and type
 'foreman start'
 
 The table is sortable. To sort by any column just click on the header.
